@@ -1,0 +1,7 @@
+These Flows are two Units of the Overall IoT based Control Infrastructure to enable the Remote Tele-Operation of a Vehicle.
+
+The json flow labelled Operator_CP.json is the Node-Red flow for the Operator Control plaftorm which contains a Node-Red User Interface for the operator which uses a the USB HID node to extract the control data (button press) for the vehicle from the Operator using an XBox 360 controller gamepad connected through USB to the host computer running the node-red flow. The data is processed within the flow into a suitable format and sent using a MQTT Output node over a MQTT server hosted by AWS (Amazon Web Services) IOT thing, to the receiver side node-red flow labelled RPi_CI.json below running on a raspberry pi embedded on the vehicle.
+
+The json flow labelled RPi_CI.json receives the control data from the Operator using an MQTT input node, and converts the data into digital command signals for an Arduino Due Microcontroller to receive and process to generate the control signals necessary to control the operation of the vehicle such as its movement and robot arms (Manipulators) through its subsytems.
+
+The flows utlize some User contributed node-red nodes such as: USBHID; Node-Red Dashboard nodes for the User Interface (UI). Other nodes utlized are standard node-red nodes available on installation.
